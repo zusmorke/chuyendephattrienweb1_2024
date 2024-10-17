@@ -1,0 +1,213 @@
+@primary-color: #03a9f4;
+@font-size-default: 14px;
+@border-color: #e1e1e1;
+@button-bg-color: @primary-color;
+@button-hover-bg-color: darken(@primary-color, 10%);
+@sale-badge-bg: @primary-color;
+@star-color: @primary-color;
+@price-color: #000;
+@old-price-color: #999;
+@product-gap: 10px; // Khoảng cách giữa các cột ảnh chỉ 10px
+
+.shop-section {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h2 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .responsive-hr {
+        width: 50px;
+        /* Đặt chiều rộng là 50px */
+        height: 3px;
+        /* Chiều cao của thẻ hr */
+        background-color: @primary-color;
+        /* Màu nền */
+        border: none;
+        /* Không viền */
+        margin-top: 10px;
+        /* Khoảng cách trên */
+        margin-bottom: 10px;
+        /* Khoảng cách dưới */
+        margin-left: 0;
+        /* Căn trái */
+    }
+
+    .showing-info {
+        font-size: @font-size-default;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .showing-sorting {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px; // Khoảng cách dưới cùng
+    }
+
+    .sorting select {
+        font-size: 16px;
+        /* Kích thước chữ trong dropdown */
+        padding: 10px;
+        /* Khoảng cách bên trong */
+        height: 40px;
+        /* Chiều cao dropdown */
+        width: auto;
+        /* Để chiều rộng tự động */
+        border: 1px solid @border-color;
+        /* Viền cho dropdown */
+        border-radius: 4px;
+        /* Bo góc cho dropdown */
+        margin-left: 15px;
+        /* Căn lề trái cách 5px */
+    }
+
+    .product-grid {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: @product-gap; // Khoảng cách giữa các cột ảnh
+
+        .product {
+            width: calc(33.333% - @product-gap);
+            background-color: #fff;
+            border: 1px solid @border-color;
+            text-align: left; // Căn lề trái toàn bộ thông tin
+            padding: 0;
+            position: relative;
+            transition: box-shadow 0.3s ease;
+            border-radius: 8px;
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+                margin: 0;
+                object-fit: cover;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+            }
+
+            h3 {
+                font-size: 18px;
+                margin: 10px 0;
+                color: #333;
+                padding: 0 0 0 15px; // Căn lề trái cách 5px
+
+                &:hover {
+                    color: #03a9f4;
+                }
+            }
+
+            .rating {
+                color: @star-color;
+                font-size: 20px;
+                margin-bottom: 10px;
+                padding-left: 15px; // Căn lề trái cách 5px
+            }
+
+            .price {
+                font-size: 16px;
+                margin-bottom: 10px;
+                padding-left: 15px; // Căn lề trái cách 5px
+
+                del {
+                    color: @old-price-color;
+                    margin-right: 5px;
+                    text-decoration: line-through;
+                    font-weight: normal;
+                }
+
+                span {
+                    color: @price-color;
+                    font-weight: bold;
+                    text-decoration: underline; // Thêm gạch chân
+                }
+
+            }
+
+            .add-to-cart {
+                background-color: @button-bg-color;
+                /* Màu nền mặc định */
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                font-size: @font-size-default;
+                cursor: pointer;
+                border-radius: 4px;
+                transition: background-color 0.3s;
+                margin-left: 15px; // Căn lề trái cách 5px
+                margin-bottom: 10px; // Cách đáy 10px
+
+                .spinner {
+                    display: none; /* Ẩn biểu tượng theo mặc định */
+                    margin-left: 5px; /* Khoảng cách giữa văn bản và biểu tượng */
+                    width: 20px; /* Kích thước biểu tượng */
+                    height: 20px; /* Kích thước biểu tượng */
+                    animation: spin 1.5s linear infinite; /* Xoay liên tục */
+                }
+                
+                @keyframes spin {
+                    0% {
+                        transform: rotate(0deg); /* Bắt đầu từ 0 độ */
+                    }
+                    100% {
+                        transform: rotate(360deg); /* Kết thúc ở 360 độ */
+                    }
+                }
+                
+                .checkmark {
+                    display: none;
+                    /* Ẩn cả hai biểu tượng mặc định */
+                }
+
+                &:hover {
+                    background-color: black;
+                    /* Màu nền khi hover */
+                }
+                .view-cart {
+                    display: inline; /* Hiển thị nút "View Cart" */
+                    margin-left: 10px;
+                    background-color: #fff; /* Nền trắng */
+                    color: #000; /* Văn bản màu đen */
+                    border: none; /* Loại bỏ viền */
+                    padding: 10px;
+                    cursor: pointer;
+                }
+            }
+
+            button {
+                background-color: @button-bg-color;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                font-size: @font-size-default;
+                cursor: pointer;
+                border-radius: 4px;
+                transition: background-color 0.3s;
+                margin-left: 15px; // Căn lề trái cách 5px
+                margin-bottom: 10px; // Cách đáy 10px
+
+                &:hover {
+                    background-color: black;
+                }
+            }
+
+            .sale-badge {
+                position: absolute;
+                top: 10px;
+                left: 30px;
+                background-color: @sale-badge-bg;
+                color: #fff;
+                padding: 5px 10px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+}
